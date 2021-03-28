@@ -27,8 +27,21 @@ cd synack-challenge
 
 > **Note:** Here we are using SSH to clone the project in case you don't have it you can use HTTPS `https://github.com/024VH98/synack-challenge.git`
 
-- Once you are inside the project you need to set up the database
+- Once you have to install npm packages and gems
+
+```
+yarn install
+bundle install
+```
+
+- Now you need to set up the database
 
 ```
 rails db:create
+```
+
+- Now you can run the project in dev mode
+
+```
+yarn dev
 ```
