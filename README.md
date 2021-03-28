@@ -16,3 +16,19 @@
 | Node          | 15.11.0 |
 | Yarn          | 1.22.10 |
 
+### Run the project
+
+- First you have to clone the repo and get into the folder
+
+```
+git clone git@github.com:024VH98/synack-challenge.git
+cd synack-challenge
+```
+
+> **Note:** Here we are using SSH to clone the project in case you don't have it you can use HTTPS `https://github.com/024VH98/synack-challenge.git`
+
+- Once you are inside the project you need to set up the database
+
+```
+rails db:create
+```
