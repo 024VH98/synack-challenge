@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Home = () => (
-  <h1>This is the homapage pe si nossa</h1>
-)
+const Home = () => {
+
+  useEffect(() => {
+    document.title = "Home"
+  })
+
+  return (
+    <h1>This is the homapage pe si nossa</h1>
+  )
+}
 
 export default Home;
