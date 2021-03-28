@@ -4,6 +4,17 @@
   "scripts": {
     "dev": "rails s || ./bin/webpack-dev-server"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "prettier --write",
+      "eslint"
+    ]
+  },
   "dependencies": {
     "@babel/preset-react": "^7.13.13",
     "@rails/actioncable": "^6.0.0",
@@ -27,6 +38,7 @@
     "eslint-plugin-react": "^7.23.1",
     "husky": "^5.2.0",
     "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
