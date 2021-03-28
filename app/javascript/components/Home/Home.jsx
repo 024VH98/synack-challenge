@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 
 const Home = () => {
-
   useEffect(() => {
-    document.title = "Home"
-  })
+    document.title = "Home";
+  });
 
-  return (
-    <h1>This is the homapage pe si nossa</h1>
-  )
-}
+  return <h1>Homepage</h1>;
+};
 
 export default Home;
