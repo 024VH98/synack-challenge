@@ -10,7 +10,7 @@
 
 | Name          | Version |
 | ------------- | ------- |
-| Ruby          | 2.6.3   |
+| Ruby          | 2.6.6   |
 | Bundle        | 2.2.6   |
 | Ruby On Rails | 6.0.3.6 |
 | Node          | 15.11.0 |
