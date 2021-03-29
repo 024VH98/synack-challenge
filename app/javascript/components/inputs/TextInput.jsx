@@ -1,7 +1,8 @@
 import React from "react";
 
-const TextInput = ({ htmlFor, innerref, ...props }) => (
+const TextInput = ({ htmlFor, innerref, label = "", ...props }) => (
   <label htmlFor={htmlFor}>
+    {label}
     <input
       type="text"
       id={htmlFor}

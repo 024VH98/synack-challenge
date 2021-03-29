@@ -1,6 +1,6 @@
 import React from "react";
 
-const RestultCard = ({ result }) => {
+const ResultCard = ({ result }) => {
   const { title, url, overview, source } = result;
   return (
     <a href={url}>
@@ -13,4 +13,4 @@ const RestultCard = ({ result }) => {
   );
 };
 
-export default RestultCard;
+export default ResultCard;
