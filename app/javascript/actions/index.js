@@ -8,9 +8,16 @@ export const setEngines = (payload) => ({
   payload,
 });
 
-export const setResults = (payload) => ({
-  type: "SET_RESULTS",
-  payload,
-});
-
+export const getResults = (query) => async (dispatch) => {
+  dispatch({
+    type: "GET_RESULTS",
+    payload: undefined,
+  });
+  const response = await fetch(`/api/search${query}`);
+  const data = await response.json();
+  dispatch({
+    type: "GET_RESULTS",
+    payload: data.data,
+  });
+};
 export default null;
