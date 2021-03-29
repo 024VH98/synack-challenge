@@ -1,6 +1,12 @@
 import { SET_ENGINES, SET_QUERY, SET_RESULTS } from "../types";
 
-const reducer = (state, action) => {
+const INITIAL_STATE = {
+  query: "",
+  engines: "google",
+  results: undefined,
+};
+
+const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_QUERY:
       return {
