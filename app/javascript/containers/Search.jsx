@@ -1,27 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/search.css";
 import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
+import queryString from "query-string";
 import SearchForm from "../components/SearchForm";
-import getSearchResults from "../hooks/getResultsSearch";
-import RestultCard from "../components/ResultCard";
+import { getResults, setQuery, setEngines } from "../actions/index";
+import ResultsContainer from "../components/ResultsContainer";
 
-const Search = () => {
+const Search = ({ results, getResults, setQuery, setEngines }) => {
   const location = useLocation();
-  const results = getSearchResults(location.search);
-  if (results === undefined) return <>Loading...</>;
-  if (results.length === 0) return <>No hay resultados</>;
+
+  useEffect(() => {
+    const params = queryString.parse(location.search, {
+      arrayFormat: "bracket",
+    });
+    console.log(params);
+    setQuery(params["q"]);
+    setEngines(params["e"].length === 2 ? "both" : params["e"][0]);
+  }, []);
+
+  useEffect(() => {
+    getResults(location.search);
+  }, [location.search]);
+
   return (
     <div className="search-container">
       <div className="fixed-search">
         <SearchForm />
       </div>
       <div className="result-container">
-        {results.map((result) => (
-          <RestultCard key={result.id} result={result} />
-        ))}
+        <ResultsContainer results={results} />
       </div>
     </div>
   );
 };
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    results: state.results,
+  };
+};
+
+const mapDispatchToProps = {
+  getResults,
+  setQuery,
+  setEngines,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
