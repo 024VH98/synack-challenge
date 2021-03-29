@@ -10,6 +10,11 @@ const reducer = (state, action) => {
         ...state,
         engines: action.payload,
       };
+    case "GET_RESULTS":
+      return {
+        ...state,
+        results: action.payload,
+      };
     default:
       return state;
   }
