@@ -1,5 +1,6 @@
 # Synack Challenge
 
+![CI Tests](https://github.com/024VH98/synack-challenge/actions/workflows/ci-tests.yml/badge.svg)
 ### Overview
 
 - In this repo you will find the solution for Synack challenge.
