@@ -6,6 +6,8 @@
 - In this repo you will find the solution for Synack challenge.
 - This is built using Ruby on Rails and ReactJS, both are in the same repo, because Rails is rendering React views.
 
+![](./doc/assets/demo.gif)
+
 ### Dependencies
 - These are the dependecies with the installed version:
 
@@ -46,3 +48,5 @@ rails db:create
 ```
 yarn dev
 ```
+
+- Now you can go to `http://localhost:3000/` and you will see the app
