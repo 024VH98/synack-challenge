@@ -10,5 +10,5 @@
   - [ ] Render
   - [ ] Behavior
 - [ ] Backend Tests
-  - [ ] Resquest
+  - [ ] Request
   - [ ] Services
