@@ -3,7 +3,7 @@ name: CI Tests
 on: push
 
 jobs:
-  tests:
+  backent-tests:
     name: Backend Tests
     runs-on: ubuntu-18.04
     env:
@@ -47,3 +47,19 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
         run: bundle exec rspec spec
+  frontend-test:
+    name: Frontend Tests
+    runs-on: ubuntu-18.04
+    env:
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Sys Dep
+        run: |
+          sudo apt-get -yqq install libpq-dev cmake postgresql-client
+          sudo n install 15.11.0
+      - name: Install Front Dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+      - name: Run Frontend tests
+        run: |
+          yarn test
