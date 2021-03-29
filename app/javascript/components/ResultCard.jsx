@@ -1,9 +1,9 @@
 import React from "react";
 
-const RestultCard = ({ result }) => {
+const ResultCard = ({ result }) => {
   const { title, url, overview, source } = result;
   return (
-    <a href={url}>
+    <a href={url} target="blank">
       <div className="result-card shadow">
         <h3>{title}</h3>
         <p>{overview}</p>
@@ -13,4 +13,4 @@ const RestultCard = ({ result }) => {
   );
 };
 
-export default RestultCard;
+export default ResultCard;

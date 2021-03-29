@@ -1,15 +1,17 @@
-.search-container {
-  display: flex;
-  flex-direction: row;
-}
-
 .search-container * {
   margin: 10px 10px;
 }
 
 .result-container {
+  display: flex;
+  flex-direction: column;
   margin-left: 500px;
   border-left: 2px solid #34495e;
+}
+
+.spinner-container {
+  display: inline-block;
+  text-align: center;
 }
 
 .fixed-search{

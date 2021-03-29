@@ -3,7 +3,7 @@ name: CI Tests
 on: push
 
 jobs:
-  backent-tests:
+  backend-tests:
     name: Backend Tests
     runs-on: ubuntu-18.04
     env:
