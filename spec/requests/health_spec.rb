@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Health endpoint", type: :request do
-  describe "GET /health" do
-    before { get '/health' }
+  describe "GET /api/health" do
+    before { get '/api/health' }
 
     it "should return OK" do
       expect(payload).not_to be_empty
@@ -10,7 +10,7 @@ RSpec.describe "Health endpoint", type: :request do
     end
 
     it "should return status code 200" do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 
