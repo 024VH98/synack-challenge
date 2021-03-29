@@ -11,4 +11,5 @@ const getSearchResults = (query) => {
 
   return results;
 };
+
 export default getSearchResults;
