@@ -1,24 +1,29 @@
-class Api::SearchController < ApplicationController
+class Api::SearchController < ApiController
+  before_action :validate_params, only: [:search]
+
   def search
-    return render json: {}, status: :unprocessable_entity unless valid_params?
+    search_result = SearchService.search(params[:q], params[:e])
     return render json: {
-      engine: params[:e],
-      query: params[:q]
+      data: search_result
     }, status: :ok
   end
 
   private
-  def valid_params?
-    return false unless parameters_included? && valid_engines?
-    true
+  def validate_params
+    validate_included_params
+    validate_engines
   end
 
-  def valid_engines?
+  def validate_engines
     valid_engines = %w(google bing)
-    (params[:e] - valid_engines).empty?
+    raise ActionController::BadRequest.new(
+      "Invalid engines values"
+    ) unless (params[:e] - valid_engines).empty?
   end
 
-  def parameters_included?
-    params.has_key?(:e) && params.has_key?(:q)
+  def validate_included_params
+    raise ActionController::BadRequest.new(
+      "Missing params"
+    ) unless params.has_key?(:e) && params.has_key?(:q)
   end
 end

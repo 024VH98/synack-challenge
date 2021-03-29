@@ -6,24 +6,24 @@ RSpec.describe "Search endpoint", type: :request do
       context "Missing" do
         it "both query params" do
           get "/api/search"
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:bad_request)
         end
 
         it "'engine' query param" do
           get "/api/search?q=this+is+some+text"
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:bad_request)
         end
 
         it "'query' query param" do
           get "/api/search?e[]=google"
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:bad_request)
         end
       end
       
       context "Wrong" do
         it "'engine' query param" do
           get "/api/search?e[]=duckduckgo&e[]=google&p=this+is+some+text"
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:bad_request)
         end
       end
     end
