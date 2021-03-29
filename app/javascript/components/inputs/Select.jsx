@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 
 const Select = ({ label, htmlFor, innerref, options, ...props }) => (
   <label htmlFor={htmlFor}>
@@ -13,4 +13,4 @@ const Select = ({ label, htmlFor, innerref, options, ...props }) => (
   </label>
 );
 
-export default forwardRef((props, ref) => <Select innerref={ref} {...props} />);
+export default Select;

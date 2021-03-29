@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 
 const TextInput = ({ htmlFor, innerref, ...props }) => (
   <label htmlFor={htmlFor}>
@@ -13,6 +13,4 @@ const TextInput = ({ htmlFor, innerref, ...props }) => (
   </label>
 );
 
-export default forwardRef((props, ref) => (
-  <TextInput innerref={ref} {...props} />
-));
+export default TextInput;

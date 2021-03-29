@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import queryString from "query-string";
 import { useHistory } from "react-router-dom";
+import { setQuery, setEngines } from "../actions/index";
 import Button from "./buttons/Button";
 import Select from "./inputs/Select";
 import TextInput from "./inputs/TextInput";
@@ -18,15 +20,24 @@ const ENGINE_OPTIONS = [
   { value: "both", title: "Google and Bing" },
 ];
 
-const SearchForm = () => {
+const SearchForm = ({ query, engines, setQuery, setEngines }) => {
   const history = useHistory();
-  const queryRef = useRef(null);
-  const engineRef = useRef(null);
+
+  const handleOnQueryChange = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value);
+  };
+
+  const handleOnEnginesChange = (e) => {
+    e.preventDefault();
+    setEngines(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const queryParams = {
-      e: ENGINE_VALUES[engineRef.current.value],
-      q: queryRef.current.value,
+      e: ENGINE_VALUES[engines],
+      q: query,
     };
     const queryStringify = queryString.stringify(queryParams, {
       arrayFormat: "bracket",
@@ -37,12 +48,18 @@ const SearchForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="search-form">
         <Title>Search Engine</Title>
-        <TextInput htmlFor="query" ref={queryRef} required />
+        <TextInput
+          htmlFor="query"
+          value={query}
+          onChange={handleOnQueryChange}
+          required
+        />
         <Select
           label="Select Engine"
           htmlFor="engine"
-          ref={engineRef}
           options={ENGINE_OPTIONS}
+          value={engines}
+          onChange={handleOnEnginesChange}
           required
         />
         <Button type="submit" />
@@ -51,4 +68,16 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return {
+    query: state.query,
+    engines: state.engines,
+  };
+};
+
+const mapDispatchToProps = {
+  setQuery,
+  setEngines,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
