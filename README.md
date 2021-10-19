@@ -28,7 +28,7 @@ git clone git@github.com:024VH98/synack-challenge.git
 cd synack-challenge
 ```
 
-> **Note:** Here we are using SSH to clone the project in case you don't have it you can use HTTPS `https://github.com/024VH98/synack-challenge.git`
+> **Note:** Here we are using SSH to clone the project in case you don't have it you can use HTTPS link: `https://github.com/024VH98/synack-challenge.git`
 
 - Once you have to install npm packages and gems
 
